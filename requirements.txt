@@ -1,0 +1,8 @@
+streamlit
+pytesseract
+PyMuPDF
+opencv-python
+scikit-learn
+matplotlib
+numpy
+Pillow
