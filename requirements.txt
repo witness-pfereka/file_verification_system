@@ -1,7 +1,7 @@
 streamlit
 pytesseract
 PyMuPDF
-opencv-python
+opencv-python-headless
 scikit-learn
 matplotlib
 numpy
