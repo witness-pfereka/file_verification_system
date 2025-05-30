@@ -1,5 +1,6 @@
 streamlit
-pytesseract
+streamlit
+easyocr
 PyMuPDF
 opencv-python-headless
 scikit-learn
