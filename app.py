@@ -1,17 +1,15 @@
 import streamlit as st
 import fitz  # PyMuPDF
-import pytesseract
+import easyocr
 import cv2
 import numpy as np
 import pickle
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import matplotlib.pyplot as plt
-from PIL import Image
-import tempfile
-import os
 
-pytesseract.pytesseract.tesseract_cmd = r"/usr/bin/tesseract"  # Change for your local or deployment path
+# === OCR Reader ===
+reader = easyocr.Reader(['en'], gpu=False)
 
 # === Utility Functions ===
 def pdf_to_images(uploaded_file):
@@ -28,7 +26,8 @@ def pdf_to_images(uploaded_file):
 def extract_text_from_images(images):
     text = ""
     for img in images:
-        text += pytesseract.image_to_string(img)
+        result = reader.readtext(img)
+        text += " ".join([line[1] for line in result]) + "\n"
     return text.strip()
 
 def compare_images(img1, img2):
